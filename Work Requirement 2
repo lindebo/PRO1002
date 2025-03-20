@@ -1,0 +1,101 @@
+#Work Requirement 2 - PRO1002
+
+#Exercise 1 
+def file_to_list():
+    filename = input("Enter the filename: ")
+
+    try:
+        with open(filename, "r") as file:
+            lines = [line.strip() for line in file] 
+        print("File contents as list:", lines)
+    except FileNotFoundError:
+        print("Error: The file does not exist. Please check the filename and try again.")
+
+file_to_list()
+
+
+#Exercise 3
+
+#Person.py
+class person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def greet(self):
+        print(f"Hello, my name is {self.name} and I am {self.age} years old.")
+
+class Student(person):
+    def __init__(self, name, age, student_id):
+        super().__init__(name, age)
+        self.student_id = student_id
+
+#main.py
+from person import Student 
+student = Student("Alice", 20, "S12345")
+student.greet()
+print(f"My student ID is {student.student_id}.")
+
+
+#Exercice 4 
+import random
+
+def math_quiz():
+    num1 = random.randint(1, 10)  
+    num2 = random.randint(1, 10)  
+    
+    correct_answer = num1 + num2  
+    
+    print(f"What is {num1} + {num2}?")  
+
+    try:
+        user_input = int(input("Your answer: "))  
+        if user_input == correct_answer:
+            print("Correct!")
+        else:
+            print(f"Incorrect. The correct answer is {correct_answer}.")
+    except ValueError:
+        print("Invalid input. Please enter a number.")
+
+math_quiz()
+
+#Exercise 5
+
+import os
+
+def list_directory():
+    dir_path = input("Enter the directory path: ").strip()
+
+    try:
+        items = os.listdir(dir_path)
+        print("\nContents of the directory:")
+        for item in items:
+            print(f"- {item}")
+    except FileNotFoundError:
+        print("Error: The directory does not exist.")
+    except PermissionError:
+        print("Error: Access denied.")
+    except Exception as e:
+        print(f"Unexpected error: {e}")
+
+list_directory()
+
+#Exercise 7
+
+def outer_function():
+    x = 10
+    print("Inside outer_function, x =", x)
+
+    def inner_function():
+        x = 20
+        print("Inside inner_function, x =", x)
+
+    inner_function()
+    print("Back in outer_function, x =", x)
+
+x = 5
+print("Outside any function, x =", x)
+
+outer_function()
+print("After calling outer_function, x =", x)
+
