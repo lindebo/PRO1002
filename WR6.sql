@@ -1,4 +1,5 @@
--- SQLite
+-- Table Definitions 
+
 CREATE TABLE Authors (
     author_id INTEGER PRIMARY KEY,
     name TEXT NOT NULL,
@@ -21,6 +22,8 @@ CREATE TABLE Quotes (
     FOREIGN KEY (author_id) REFERENCES Authors(author_id),
     FOREIGN KEY (book_id) REFERENCES Books(book_id)
 );
+
+-- Insert Statements
 
 -- Authors
 INSERT INTO Authors (name, birth_date, nationality) VALUES
@@ -65,6 +68,8 @@ INSERT INTO Quotes (quote_text, author_id, book_id) VALUES
 ("In dreams, you don't need to make any distinctions.", 4, 4),
 ("You are your best thing.", 5, 5),
 ("Love is or it ain't. Thin love ain't love at all.", 5, 10);
+
+--Select Statements
 
 SELECT b.title, COUNT(q.quote_id) AS quote_count
 FROM Books b
